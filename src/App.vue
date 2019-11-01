@@ -16,19 +16,19 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld />
+      <ToDo />
     </v-content>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import ToDo from "./components/ToDo.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
-    HelloWorld
+    ToDo
   },
   data: () => ({
     //
