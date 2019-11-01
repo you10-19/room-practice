@@ -24,9 +24,9 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class ToDo extends Vue {
-  items: { name: string, detail: string }[] = [
-      { name: "物理学演習", detail: "プリントの中から2題" },
-      { name: "物理学実験", detail: "実験計画書" },
+  items: { name: string; detail: string }[] = [
+    { name: "物理学演習", detail: "プリントの中から2題" },
+    { name: "物理学実験", detail: "実験計画書" }
   ];
   newItemName: string = "";
   newItemDetail: string = "";
