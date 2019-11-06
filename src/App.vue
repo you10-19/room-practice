@@ -16,7 +16,9 @@
     </v-app-bar>
 
     <v-content>
-      <ToDo />
+      <v-container>
+        <ToDo />
+      </v-container>
     </v-content>
   </v-app>
 </template>
