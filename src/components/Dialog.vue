@@ -9,12 +9,22 @@
             <v-container>
               <v-row>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field label="title" placeholder="新しいタスク" required></v-text-field>
-                  <v-text-field label="detail" placeholder="詳細"></v-text-field>
+                  <v-text-field 
+                  label="title" 
+                  placeholder="新しいタスク" 
+                  v-model="newItemTitle" 
+                  required>
+                  </v-text-field>
+                  <v-text-field 
+                  label="detail" 
+                  placeholder="詳細"
+                  v-model="newItemTitle"
+                  >
+                  </v-text-field>
                 </v-col>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" text @click="onclick()">Save</v-btn>
+            <v-btn color="blue darken-1" text @click="onclick()">追加する</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -28,7 +38,6 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class Dialog extends Vue {
     @Prop()
     public onclick(){
-
     }
 }
 </script>
