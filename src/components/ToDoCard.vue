@@ -9,7 +9,7 @@
           <v-card-text>{{item.date}}</v-card-text>
           <v-card-actions>
             <v-btn v-if="item.done" text @click="item.done = false">元に戻す</v-btn>
-            <v-btn v-else text @click="item.done = true">完了済みにする</v-btn>
+            <v-btn v-else text @click="complete">完了済みにする</v-btn>
           </v-card-actions>
         </v-col>
       </v-row>
@@ -19,15 +19,14 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import Task from "../Task";
 
 @Component
 export default class ToDoCard extends Vue {
   @Prop()
-  public item!:{
-      title: string,
-      detail: string,
-      date: string,
-      done: boolean,
-  };
+  public item!: Task
+  public complete(){
+    this.$emit("complete");
+  }
 }
 </script>

@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div v-for="item in items" :key="item.title">
-      <ToDoCard :item=item />
+    <div v-for="(item,index) in items" :key="item.title">
+      <ToDoCard 
+      :item=item
+      @complete="deleteTask(index)" />
+      <Dialog @submit="addTask" />
     </div>
   </div>
 </template>
@@ -9,6 +12,8 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import ToDoCard from "./ToDoCard.vue"
+import Dialog from "./Dialog.vue"
+import Task from "../Task";
 
 @Component({
   components:{
@@ -17,12 +22,7 @@ import ToDoCard from "./ToDoCard.vue"
 })
 
 export default class ToDo extends Vue {
-  public items: {
-    title: string;
-    detail: string;
-    date: string;
-    done: boolean;
-  }[] = [
+  public items: Task[] = [
     { title: "物理学演習",
     detail: "プリントの中から2題" ,
     date: "2019-11-14",
@@ -32,8 +32,11 @@ export default class ToDo extends Vue {
     date: "2019-11-14",
     done: false}
   ];
-  newItemTitle: string = "";
-  newItemDetail: string = "";
-  newItemDate: string = "";
+   public addTask(item: Task){
+     this.items.push(item);
+   }
+   public deleteTask(i: number){
+     this.items.splice(i,1);
+   }
 }
 </script>

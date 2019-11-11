@@ -18,7 +18,7 @@
                   <v-text-field 
                   label="detail" 
                   placeholder="詳細"
-                  v-model="newItemTitle"
+                  v-model="newItemDetail"
                   >
                   </v-text-field>
                 </v-col>
@@ -33,11 +33,14 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import Task from "../Task";
 
 @Component
 export default class Dialog extends Vue {
     @Prop()
+    public newItem?: Task;
     public onclick(){
+        this.$emit("submit", this.newItem);
     }
 }
 </script>
