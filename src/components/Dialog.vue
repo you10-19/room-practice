@@ -2,7 +2,7 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" max-width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on" @click="resetForm">追加する</v-btn>
+        <v-btn color="primary" dark v-on="on">追加する</v-btn>
       </template>
       <v-card>
         <v-card-title>
@@ -16,20 +16,20 @@
                   <v-text-field
                   label="title"
                   placeholder="新しいタスク"
-                  v-model="newItem.title"
+                  v-model="newItemTitle"
                   required
                   >
                   </v-text-field>
                   <v-text-field
                   label="detail"
                   placeholder="詳細"
-                  v-model="newItem.detail"
+                  v-model="newItemDetail"
                   >
                   </v-text-field>
                   <v-text-field
                   label="date"
                   placeholder="期日"
-                  v-model="newItem.date"
+                  v-model="newItemDate"
                   >
                  </v-text-field>
                 </v-form>
@@ -53,20 +53,19 @@ import Task from "../Task";
 @Component
 export default class Dialog extends Vue {
   public dialog: boolean = false;
-  public newItem: Task ={
-      title: "",
-      detail: "",
-      date: "",
-      done: false
-  }
+  public newItemTitle: string = "";
+  public newItemDetail: string = "";
+  public newItewmDate: string =  ""; 
   
   @Emit("submit")
-  onclick() {
+  onclick() :Task {
     this.dialog = false;
-    return this.newItem;
+    return{
+        title: this.newItemTitle,
+        detail: this.newItemDetail,
+        date: this.newItewmDate,
+        done: false
+    };
   }
-   resetForm() {
-        this.$refs.form.reset()
-   }
 }
 </script>
