@@ -1,6 +1,6 @@
 export default interface Task {
-    title: string;
-    detail: string;
-    date: string;
-    done: boolean;
+  title: string;
+  detail: string;
+  date: string;
+  done: boolean;
 }

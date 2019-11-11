@@ -4,11 +4,13 @@
       <v-row>
         <v-icon>event</v-icon>
         <v-col align-start>
-          <v-card-title>{{item.title}}</v-card-title>
-          <v-card-subtitle>{{item.detail}}</v-card-subtitle>
-          <v-card-text>{{item.date}}</v-card-text>
+          <v-card-title>{{ item.title }}</v-card-title>
+          <v-card-subtitle>{{ item.detail }}</v-card-subtitle>
+          <v-card-text>{{ item.date }}</v-card-text>
           <v-card-actions>
-            <v-btn v-if="item.done" text @click="item.done = false">元に戻す</v-btn>
+            <v-btn v-if="item.done" text @click="item.done = false"
+              >元に戻す</v-btn
+            >
             <v-btn v-else text @click="complete">完了済みにする</v-btn>
           </v-card-actions>
         </v-col>
@@ -24,8 +26,8 @@ import Task from "../Task";
 @Component
 export default class ToDoCard extends Vue {
   @Prop()
-  public item!: Task
-  public complete(){
+  public item!: Task;
+  public complete() {
     this.$emit("complete");
   }
 }
