@@ -3,6 +3,7 @@
     <v-container>
       <v-row>
         <v-icon>event</v-icon>
+        <!-- v-iconを使えるようにする -->
         <v-col align-start>
           <v-card-title>{{ item.title }}</v-card-title>
           <v-card-subtitle>{{ item.detail }}</v-card-subtitle>
@@ -20,15 +21,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Emit, Vue } from "vue-property-decorator";
 import Task from "../Task";
 
 @Component
 export default class ToDoCard extends Vue {
   @Prop()
   public item!: Task;
-  public complete() {
-    this.$emit("complete");
-  }
+
+  @Emit("complete")
+  complete() {}
 }
 </script>

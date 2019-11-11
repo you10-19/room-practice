@@ -3,7 +3,7 @@
     <div v-for="(item, index) in items" :key="item.title">
       <ToDoCard :item="item" @complete="deleteTask(index)" />
     </div>
-    <Dialog @submit="addTask()" />
+    <Dialog @submit="addTask" />
   </div>
 </template>
 
