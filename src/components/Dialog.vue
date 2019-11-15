@@ -68,7 +68,7 @@ export default class Dialog extends Vue {
     return {
       title: this.newItemTitle,
       detail: this.newItemDetail,
-      date: this.newItewmDate,
+      date: this.newItemDate,
       done: false
     };
   }
