@@ -56,9 +56,9 @@ export default class Dialog extends Vue {
   public valid: boolean = true;
   public newItemTitle: string = "";
   public newItemDetail: string = "";
-  public newItemDate: string = ""; 
+  public newItemDate: string = "";
   public clear() {
-    if (this.$refs.form){
+    if (this.$refs.form) {
       this.form.reset();
     }
   }
