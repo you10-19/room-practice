@@ -2,7 +2,7 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" max-width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on">追加する</v-btn>
+        <v-btn color="primary" dark v-on="on" @click="clear">追加する</v-btn>
       </template>
       <v-card>
         <v-card-title>
@@ -14,24 +14,24 @@
               <v-col cols="12" sm="6" md="4">
                 <v-form ref="form">
                   <v-text-field
-                  label="title"
-                  placeholder="新しいタスク"
-                  v-model="newItemTitle"
-                  required
+                    label="title"
+                    placeholder="新しいタスク"
+                    v-model="newItemTitle"
+                    required
                   >
                   </v-text-field>
                   <v-text-field
-                  label="detail"
-                  placeholder="詳細"
-                  v-model="newItemDetail"
+                    label="detail"
+                    placeholder="詳細"
+                    v-model="newItemDetail"
                   >
                   </v-text-field>
                   <v-text-field
-                  label="date"
-                  placeholder="期日"
-                  v-model="newItemDate"
+                    label="date"
+                    placeholder="期日"
+                    v-model="newItemDate"
                   >
-                 </v-text-field>
+                  </v-text-field>
                 </v-form>
               </v-col>
             </v-row>
@@ -53,19 +53,28 @@ import Task from "../Task";
 @Component
 export default class Dialog extends Vue {
   public dialog: boolean = false;
+  public valid: boolean = true;
   public newItemTitle: string = "";
   public newItemDetail: string = "";
-  public newItewmDate: string =  ""; 
-  
+  public newItemDate: string = ""; 
+  public clear() {
+    if (this.$refs.form){
+      this.form.reset();
+    }
+  }
   @Emit("submit")
-  onclick() :Task {
+  onclick(): Task {
     this.dialog = false;
-    return{
-        title: this.newItemTitle,
-        detail: this.newItemDetail,
-        date: this.newItewmDate,
-        done: false
+    return {
+      title: this.newItemTitle,
+      detail: this.newItemDetail,
+      date: this.newItewmDate,
+      done: false
     };
+  }
+
+  get form(): Vue & { reset: () => void } {
+    return this.$refs.form as Vue & { reset: () => void };
   }
 }
 </script>
